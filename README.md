@@ -1,3 +1,3 @@
 ```
-go install github.com/phucvinh52/ssh-manager
+go install github.com/phucvinh52/ssh-manager@latest
 ```
