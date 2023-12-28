@@ -17,7 +17,7 @@ func main() {
 		panic(err)
 	}
 
-	sshHosts := sshcfg.Filter("o")
+	sshHosts := sshcfg.Filter("")
 
 	app := tview.NewApplication()
 	grid := tview.NewGrid().
