@@ -45,8 +45,8 @@ func main() {
 	table.Select(1, 0)
 	// table.SetFixed(1, 1)
 	table.SetSelectedFunc(func(row, column int) {
-		fmt.Println("...Waiting connection...")
 		app.Stop()
+		fmt.Printf("Waiting connection [%s]...\n", sshHosts[row-1].Host)
 		cmd := exec.Command("ssh", sshHosts[row-1].Host)
 		cmd.Stdout = os.Stdout
 		cmd.Stdin = os.Stdin
