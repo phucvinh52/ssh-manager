@@ -58,16 +58,18 @@ func (app *AppUI) keyBinding() {
 	app.CFilter.SetChangedFunc(func(text string) {
 		app.sshFiltered = app.sshCfg.Filter(text)
 		app.CTableSSH.Clear()
-		app.CTableSSH.SetCell(0, 0, tview.NewTableCell("NAME").SetTextColor(tcell.ColorGray).SetSelectable(false))
-		app.CTableSSH.SetCell(0, 1, tview.NewTableCell("HOSTNAME").SetTextColor(tcell.ColorGray).SetSelectable(false))
-		app.CTableSSH.SetCell(0, 2, tview.NewTableCell("USER").SetTextColor(tcell.ColorGray).SetSelectable(false))
-		app.CTableSSH.SetCell(0, 3, tview.NewTableCell("PORT").SetTextColor(tcell.ColorGray).SetSelectable(false))
+		app.CTableSSH.SetCell(0, 0, tview.NewTableCell("#").SetTextColor(tcell.ColorGray).SetSelectable(false))
+		app.CTableSSH.SetCell(0, 1, tview.NewTableCell("NAME").SetTextColor(tcell.ColorGray).SetSelectable(false))
+		app.CTableSSH.SetCell(0, 2, tview.NewTableCell("HOSTNAME").SetTextColor(tcell.ColorGray).SetSelectable(false))
+		app.CTableSSH.SetCell(0, 3, tview.NewTableCell("USER").SetTextColor(tcell.ColorGray).SetSelectable(false))
+		app.CTableSSH.SetCell(0, 4, tview.NewTableCell("PORT").SetTextColor(tcell.ColorGray).SetSelectable(false))
 		for k, v := range app.sshFiltered {
 			idx := k + 1
-			app.CTableSSH.SetCell(idx, 0, tview.NewTableCell(v.Host))
-			app.CTableSSH.SetCell(idx, 1, tview.NewTableCell(v.HostName))
-			app.CTableSSH.SetCell(idx, 2, tview.NewTableCell(v.User))
-			app.CTableSSH.SetCell(idx, 3, tview.NewTableCell(v.Port))
+			app.CTableSSH.SetCell(idx, 0, tview.NewTableCell(fmt.Sprint(idx)))
+			app.CTableSSH.SetCell(idx, 1, tview.NewTableCell(v.Host))
+			app.CTableSSH.SetCell(idx, 2, tview.NewTableCell(v.HostName))
+			app.CTableSSH.SetCell(idx, 3, tview.NewTableCell(v.User))
+			app.CTableSSH.SetCell(idx, 4, tview.NewTableCell(v.Port))
 		}
 		// // table.SetEvaluateAllRows(true)
 		app.CTableSSH.SetSelectable(true, false)
